@@ -25,7 +25,6 @@
 function lagrangemethod (file)
 
 printf("Lagrange Method\n")
-title("Lagrange")   # add title to the graph
 eval(file)          # get input params
 
 # keep track of function's execution time
@@ -47,12 +46,21 @@ if Dimension == 3
   # compute lagrange points for Z axis
   z = lagrange(Pt_nodes, Pt, PZ);
 endif
-
 # keep track of function's execution time
 TIME_TO_EXECUTE = time() - TIME_TO_EXECUTE;
 printf("Lagrange Time: %d\n", TIME_TO_EXECUTE);
 
+  if verbose == 1
+    Pt
+    x
+    y
+    if Dimension == 3
+      z
+    endif
+  endif
 # draw graph
+title("Lagrange")   # add title to the graph
+
 if Dimension == 2
   # plot polynomial in 2D  
   printf("Ploting 2D Lagrange")

@@ -25,7 +25,7 @@
 
 function gaussjordanmethod (file)
 
-  title("Gauss Jordan")     # add title to the graph
+  printf("Gauss-Jordan Method\n")
   eval(file)                # get input params
   
   # keep track of function's execution time
@@ -48,15 +48,16 @@ function gaussjordanmethod (file)
   
   # Get axis coefficients from matrix rref
   if Dimension == 3
-    [CX, CY, CZ] = get_coefficients(M, PX, PY, PZ, n);
+    [CX, CY, CZ] = get_coefficients_XYZ(M, PX, PY, PZ, n);
   elseif Dimension == 2
-    [CX, CY] = get_coefficients(M, PX, PY, n);
+    [CX, CY] = get_coefficients_XY(M, PX, PY, n);
   endif
     
   # create curves to plot
-  x = meshselection(meshdigit, n, outputnodes);
-  y = x;
-  z = x;
+  t = meshselection(meshdigit, n, outputnodes);
+  x = t;
+  y = t;
+  z = t;
   
   x = polyval(CX, x);
   y = polyval(CY, y);
@@ -67,16 +68,27 @@ function gaussjordanmethod (file)
   # keep track of function's execution time
   TIME_TO_EXECUTE = time() - TIME_TO_EXECUTE;
   printf("Gauss-Jordan Time: %d\n", TIME_TO_EXECUTE);
-  
+  if verbose == 1
+    CX
+    CY
+    t
+    x
+    y
+    if Dimension == 3
+      z
+    endif
+  endif
+  # draw
+  title("Gauss Jordan")     # add title to the graph
   if Dimension == 2
     # plot polynomial in 2D  
     printf("Ploting 2D GaussJordan")
     plot(x, y, 'r')  
+
   elseif Dimension == 3
 # plot polynomial in 3D
     printf("Ploting 3D GaussJordan")
     plot3(x, y, z, 'r')
-  
   endif
   
   
@@ -105,7 +117,7 @@ function [M] = get_polynomials(Pt, n)
   endif
 endfunction
 
-function [CX, CY] = get_coefficients(M, PX, PY, n)
+function [CX, CY] = get_coefficients_XY(M, PX, PY, n)
 
   # make the augmented matrix by adding two last rows of XY values
   M = M';
@@ -124,7 +136,7 @@ function [CX, CY] = get_coefficients(M, PX, PY, n)
   
 endfunction
 
-function [CX, CY, CZ] = get_coefficients(M, PX, PY, PZ, n)
+function [CX, CY, CZ] = get_coefficients_XYZ(M, PX, PY, PZ, n)
 
   # make the augmented matrix by adding two last rows of XY values
   M = M';

@@ -25,7 +25,6 @@
 function newtonmethod (file)
 
 printf("Newton Method\n")
-title("Newton")     # add title to the graph
 eval(file)          # get input params
 
 # keep track of function's execution time
@@ -50,8 +49,17 @@ endif
 TIME_TO_EXECUTE = time() - TIME_TO_EXECUTE;
 printf("Newton Time: %d\n", TIME_TO_EXECUTE);
 
-# draw
 
+  if verbose == 1
+    Pt
+    x
+    y
+    if Dimension == 3
+      z
+    endif
+  endif
+# draw
+title("Newton")     # add title to the graph
   if Dimension == 2
     # plot polynomial in 2D  
     printf("Ploting 2D Newton")

@@ -20,7 +20,7 @@ Dimension = 2;  % dimension 2 or 3 (consistent with PZ)
 
 meshdigit = 0;  % 0 regular [0, n], 1 regular [0, 1], 2 Chebyshev [-1, 1]
 
-methoddigit = 2;  % 0 Gauss-Jordan (R), 1 Lagrange (G), 2 Newton (B), -1 All
+methoddigit = 0;  % 0 Gauss-Jordan (R), 1 Lagrange (G), 2 Newton (B), -1 All
 
 outputnodes = 6;  % number of nodes for the output mesh
 
