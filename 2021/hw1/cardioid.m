@@ -26,8 +26,8 @@ C0 = [-2 0];  % [x y]
 C1 = [2 0];   % [x y]
 
 thera = 0;
-x = []
-y = []
+x = [];
+y = [];
 
 % +1 frame to close the loop
 for i = 1 : 1 : frames + 1
@@ -62,7 +62,6 @@ for i = 1 : 1 : frames + 1
   hold on
   % draw current cardioid curve
   plot(x, y, 'r');
-  R = R0 + R1;
   % set graph limits
   axis([-8, 8, -8, 8], "square")
   hold off
